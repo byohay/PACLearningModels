@@ -8,6 +8,6 @@ def timing(f):
         time1 = time.time()
         ret = f(*args)
         time2 = time.time()
-        print '%s function took %f seconds' % (f.func_name, (time2-time1))
+        print('%s function took %f seconds' % (f.__name__, (time2-time1)))
         return ret
     return wrap

@@ -35,7 +35,7 @@ class NeighborhoodWithOtherRepresentations(object):
         """
         mutations = list()
 
-        for i in xrange(self.number_of_activations):
+        for i in range(self.number_of_activations):
             mutation = self.get_single_mutation(first_rep, other_reps_to_consider)
             mutations.append(mutation)
 

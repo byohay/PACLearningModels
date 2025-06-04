@@ -12,4 +12,4 @@ class UniformDistribution(Distribution):
         return 1 / (2 ** self.length)
 
     def get_random_sample(self):
-        return [choice([-1,1]) for r in xrange(self.length)]
+        return [choice([-1,1]) for r in range(self.length)]

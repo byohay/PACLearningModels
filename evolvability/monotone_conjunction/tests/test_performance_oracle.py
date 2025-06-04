@@ -1,6 +1,6 @@
 import unittest
 
-from mock.mock import Mock
+from unittest.mock import Mock
 
 from LearningModels.evolvability.monotone_conjunction.performance_oracle import PerformanceOracle
 

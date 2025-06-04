@@ -17,7 +17,7 @@ def main():
 
     pr.enable()
 
-    for i in xrange(1):
+    for i in range(1):
         recombination_simulations_main()
         HGT_simulations_main__HGT_factor()
         run_simulation__classical_model()

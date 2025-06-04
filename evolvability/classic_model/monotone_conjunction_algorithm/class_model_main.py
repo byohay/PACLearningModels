@@ -21,7 +21,7 @@ def main():
 
     hypo = algorithm.learn_ideal_function(epsilon)
 
-    print "HYPO IS: " + str(hypo)
+    print("HYPO IS: " + str(hypo))
 
 if __name__ == "__main__":
     main()

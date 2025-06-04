@@ -1,4 +1,3 @@
-from itertools import izip
 import distance
 
 from LearningModels.evolvability.classic_model.neighborhood import Neighborhood
@@ -22,7 +21,7 @@ class MonotoneConjunctionNeighborhood(Neighborhood):
 
         rep = list(rep)
 
-        for i in xrange(len(rep)):
+        for i in range(len(rep)):
             rep_plus_and_rep_minus.add(tuple(rep[:i] + [1 - rep[i]] + rep[i+1:]))
 
         return rep_plus_and_rep_minus

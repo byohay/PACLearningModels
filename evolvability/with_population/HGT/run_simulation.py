@@ -45,22 +45,22 @@ def HGT_simulations_main__performance_rate():
     HGT_factor = 0.5
 
     avg_performance_rate = list()
-    for i in xrange(1000):
+    for i in range(1000):
         avg_performance_rate.append((0, [0]*i))
 
     common_classes.create_next_HGT_process(HGT_factor)
 
-    for _ in xrange(number_of_activations):
+    for _ in range(number_of_activations):
         current_performance_rate = get_performance_rate_of_single_run(common_classes)
 
         performance_rate_with_same_generation = avg_performance_rate[len(current_performance_rate)]
         avg_performance_rate[len(current_performance_rate)] = (performance_rate_with_same_generation[0]+1,
                                                                [a+b for a, b in zip(performance_rate_with_same_generation[1],current_performance_rate)])
 
-    for i in xrange(len(avg_performance_rate)):
-        if avg_performance_rate[i][0] is not 0:
+    for i in range(len(avg_performance_rate)):
+        if avg_performance_rate[i][0] != 0:
             average_rate_for_generation_i = [avg_rate / avg_performance_rate[i][0] for avg_rate in avg_performance_rate[i][1]]
-            print "performance rate for " + str(i) + " generation is: " + str(average_rate_for_generation_i)
+            print("performance rate for " + str(i) + " generation is: " + str(average_rate_for_generation_i))
 
 
 def HGT_simulations_main__HGT_factor():
@@ -73,15 +73,15 @@ def HGT_simulations_main__HGT_factor():
         generation_number = 0
         common_classes.create_next_HGT_process(HGT_factor)
 
-        for _ in xrange(number_of_activations):
+        for _ in range(number_of_activations):
             generation_number += get_number_of_generations_of_single_run(common_classes)
 
         avg_number_of_generations = float(generation_number) / number_of_activations
 
-        print "number_of_generations for " + str(HGT_factor) + " factor is: " + str(avg_number_of_generations)
+        print("number_of_generations for " + str(HGT_factor) + " factor is: " + str(avg_number_of_generations))
         number_of_generations_per_factor.append(avg_number_of_generations)
 
-    print "number_of_generations_per_factor: " + str(number_of_generations_per_factor)
+    print("number_of_generations_per_factor: " + str(number_of_generations_per_factor))
 
 
 def HGT_simulations_main__mutation_factor(HGT_factor):
@@ -94,16 +94,16 @@ def HGT_simulations_main__mutation_factor(HGT_factor):
         generation_number = 0
         common_classes.create_next_HGT_process(HGT_factor)
 
-        for _ in xrange(number_of_activations):
+        for _ in range(number_of_activations):
             generation_number += get_number_of_generations_of_single_run(common_classes, 1, mutation_factor)
 
         avg_number_of_generations = float(generation_number) / number_of_activations
 
-        print "number_of_generations for " + str(mutation_factor) + " mutation_factor " \
-              "is: " + str(avg_number_of_generations)
+        print("number_of_generations for " + str(mutation_factor) + " mutation_factor " \
+              "is: " + str(avg_number_of_generations))
         number_of_generations_per_factor.append(avg_number_of_generations)
 
-    print "number_of_generations_per_factor: " + str(number_of_generations_per_factor)
+    print("number_of_generations_per_factor: " + str(number_of_generations_per_factor))
 
 
 def HGT_simulations_main__parallel():
@@ -122,12 +122,12 @@ def HGT_simulations_main__parallel():
                                                                        tolerance, HGT_process, representation_class,
                                                                        number_of_activations / 4,
                                                                        get_number_of_generations_of_single_run)
-                                                 for _ in xrange(4))) / 4
+                                                 for _ in range(4))) / 4
 
-        print "number_of_generations for " + str(HGT_factor) + " factor is: " + str(avg_number_of_generations)
+        print("number_of_generations for " + str(HGT_factor) + " factor is: " + str(avg_number_of_generations))
         number_of_generations_per_factor.append(avg_number_of_generations)
 
-    print "number_of_generations_per_factor: " + str(number_of_generations_per_factor)
+    print("number_of_generations_per_factor: " + str(number_of_generations_per_factor))
 
 
 def HGT_simulations_main__population_factor():
@@ -143,15 +143,15 @@ def HGT_simulations_main__population_factor():
         generation_number = 0
         common_classes.create_next_HGT_process(HGT_factor)
 
-        for _ in xrange(number_of_activations):
+        for _ in range(number_of_activations):
             generation_number += get_number_of_generations_of_single_run(common_classes, population_factor)
 
         avg_number_of_generations = float(generation_number) / number_of_activations
 
-        print "number_of_generations for " + str(population_factor) + " population is: " + str(avg_number_of_generations)
+        print("number_of_generations for " + str(population_factor) + " population is: " + str(avg_number_of_generations))
         number_of_generations_per_factor.append(avg_number_of_generations)
 
-    print "number_of_generations_per_factor: " + str(number_of_generations_per_factor)
+    print("number_of_generations_per_factor: " + str(number_of_generations_per_factor))
 
 if __name__ == "__main__":
     HGT_simulations_main__HGT_factor()

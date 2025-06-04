@@ -17,8 +17,8 @@ def main():
 
     hypo = pac_alg.learn_ideal_function(0.5, 0.1)
 
-    print "FUNC IS: " + str(function)
-    print "HYPO IS: " + str(hypo)
+    print("FUNC IS: " + str(function))
+    print("HYPO IS: " + str(hypo))
 
 if __name__ == "__main__":
     main()

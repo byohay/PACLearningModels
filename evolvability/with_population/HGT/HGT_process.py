@@ -13,7 +13,7 @@ class HGTProcess(NaturalProcessMutationCalculator):
     def compute_percent_of_number_of_reps_in_population(self, population):
         self.fraction_of_reps_that_has_1 = list()
 
-        for gene in xrange(self.length):
+        for gene in range(self.length):
             summation = 0
 
             for x in population:
@@ -45,14 +45,14 @@ class HGTProcess(NaturalProcessMutationCalculator):
         :return:
         """
 
-        if len(other_population) is 0:
+        if len(other_population) == 0:
             return first_rep
 
         single_mutation = list(first_rep)
         genes_indices = range(self.length)
         genes_transferring = self.get_number_of_genes_transferring()
 
-        for _ in xrange(genes_transferring):
+        for _ in range(genes_transferring):
             gene_index = self.get_random_gene_index(genes_indices)
 
             if self.is_chance_of_gene_passing_occurred() and\

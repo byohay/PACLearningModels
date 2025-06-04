@@ -11,7 +11,7 @@ def test_speed_of_rep_plus_minus():
 
     pr.enable()
 
-    for i in xrange(100):
+    for i in range(100):
         neighbors_finder.get_neighborhood_of_rep((1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1,
                                                   1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1,
                                                   1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1,

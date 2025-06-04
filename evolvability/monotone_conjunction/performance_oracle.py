@@ -17,7 +17,7 @@ class PerformanceOracle:
         """
         summation = 0
 
-        samples = [tuple(self.concept_class.get_random_sample()) for _ in xrange(self.selection_size)]
+        samples = [tuple(self.concept_class.get_random_sample()) for _ in range(self.selection_size)]
         for sample in samples:
             if (self.concept_class.is_function_answering_yes_on_sample(sample) ==
                     self.concept_class.is_function_answering_yes_on_sample(sample, representation)):

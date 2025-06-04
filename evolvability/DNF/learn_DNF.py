@@ -46,7 +46,7 @@ def learn_DNF__recombination():
     recombinator = Recombinator(neighborhood, performance_oracle, tolerance, epsilon)
     algorithm = ConstantPopulationMutationConjunctionAlgorithm(recombinator, length, epsilon, performance_oracle, 75)
 
-    print algorithm.learn_ideal_function_until_match()
+    print(algorithm.learn_ideal_function_until_match())
 
 
 def learn_DNF__basic_model():
@@ -65,7 +65,7 @@ def learn_DNF__basic_model():
     mutator = Mutator(mutation_neighborhood, performance_oracle, tolerance, mutation_probability, epsilon)
     algorithm = ConjunctionEvolvabilityAlgorithm(mutator, length, epsilon, performance_oracle)
 
-    print algorithm.learn_ideal_function_until_match()
+    print(algorithm.learn_ideal_function_until_match())
 
 def learn_DNF__HGT():
     dnf = DNF()
@@ -87,7 +87,7 @@ def learn_DNF__HGT():
     HGT_mutator = HGT_Mutator(neighborhood, performance_oracle, tolerance, epsilon, natural_process)
     algorithm = ConstantPopulationMutationConjunctionAlgorithm(HGT_mutator, length, epsilon, performance_oracle, 75)
 
-    print algorithm.learn_ideal_function_until_match()
+    print(algorithm.learn_ideal_function_until_match())
 
 if __name__ == "__main__":
     learn_DNF__recombination()

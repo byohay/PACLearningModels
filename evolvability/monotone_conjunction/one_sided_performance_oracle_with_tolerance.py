@@ -16,11 +16,11 @@ class OneSidedPerformanceOracleWithTolerance(object):
         number_of_ones_in_ideal = sum(conjunction)
         in_ideal_not_in_rep = 0
 
-        if number_of_ones_in_ideal is 0:
+        if number_of_ones_in_ideal == 0:
             return 1
 
         for i, j in zip(representation, conjunction):
-            if i is 0 and j is 1:
+            if i == 0 and j == 1:
                 in_ideal_not_in_rep += 1
 
         real_perf = 1 - ((2 ** -number_of_ones_in_rep) * (1 - 2 ** -in_ideal_not_in_rep) /

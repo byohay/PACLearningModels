@@ -1,6 +1,6 @@
 import unittest
 from LearningModels.evolvability.with_population.HGT.HGT_process import HGTProcess
-from mock import patch
+from unittest.mock import patch
 from LearningModels.evolvability.with_population.HGT.HGT_process_constant_genes_number import \
     HGTProcessConstantGenesNumber
 

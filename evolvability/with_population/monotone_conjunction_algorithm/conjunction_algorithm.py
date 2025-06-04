@@ -26,4 +26,4 @@ class MutationConjunctionAlgorithm(MutationAlgorithm):
         self.population_size = (self.number_of_processors**7)*self.parallel_time_steps * population_factor
 
     def get_random_function(self):
-        return [randint(0, 1) for _ in xrange(self.length)]
+        return [randint(0, 1) for _ in range(self.length)]

@@ -6,7 +6,7 @@ __author__ = 'yben_000'
 def get_set_of_all_representations_with_length(length):
     representation_class = set()
 
-    for i in xrange(2**length):
+    for i in range(2**length):
         representation_class.add(tuple(int(x) for x in bin(i)[2:].zfill(length)))
 
     return representation_class
@@ -27,11 +27,11 @@ def compute_part(length, epsilon, mutation_neighborhood,
                  times_to_compute, get_number_of_generations_of_single_run):
     generation_number = 0
 
-    for _ in xrange(times_to_compute):
+    for _ in range(times_to_compute):
         generation_number += get_number_of_generations_of_single_run(length, epsilon, mutation_neighborhood,
                                                                      tolerance, natural_process, representation_class)
 
-    print "finished with " + str(float(generation_number) / times_to_compute)
+    print("finished with " + str(float(generation_number) / times_to_compute))
     return float(generation_number) / times_to_compute
 
 

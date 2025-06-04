@@ -85,7 +85,7 @@ class DNF:
         return self.ideal_function
 
     def get_random_sample(self):
-        return [choice([-1, 1]) for _ in xrange(self.n)]
+        return [choice([-1, 1]) for _ in range(self.n)]
 
     def is_function_answering_yes_on_sample(self, sample):
         for conjunction in self.ideal_function:
@@ -98,7 +98,7 @@ class DNF:
         index = -1
         for i in conjunction:
             index += 1
-            if i is 0:
+            if i == 0:
                 continue
             if i != sample[index]:
                 return False

@@ -27,7 +27,7 @@ def HGT_main():
     final_population = mutation.learn_ideal_function(concept_class)
 
     if len(final_population) <= 30:
-        print final_population
+        print(final_population)
 
 if __name__ == "__main__":
     HGT_main()

@@ -1,6 +1,6 @@
 import unittest
 
-from mock import Mock
+from unittest.mock import Mock
 
 from LearningModels.PAC.PAC_Algorithm import PAC_Algorithm
 

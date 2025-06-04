@@ -6,21 +6,21 @@ __author__ = 'yben_000'
 class Conjunction:
     def __init__(self, n):
         self.n = n
-        self.ideal_function = [randint(-1, 1) for _ in xrange(self.n)]
+        self.ideal_function = [randint(-1, 1) for _ in range(self.n)]
 
     def get_ideal_function(self):
         return self.ideal_function
 
     def set_ideal_function_with_genes_from_real_data(self):
         if self.n < 58:
-            print "Something is not right!!"
+            print("Something is not right!!")
             return
 
         self.ideal_function = list(self.ideal_function)
 
         genes_indices = range(self.n)
 
-        for i in xrange(58):
+        for i in range(58):
             gene_index = choice(genes_indices)
             self.ideal_function[gene_index] = 1
             genes_indices.remove(gene_index)
@@ -28,10 +28,10 @@ class Conjunction:
         self.ideal_function = tuple(self.ideal_function)
 
     def get_random_sample(self):
-        return [choice([-1, 1]) for _ in xrange(self.n)]
+        return [choice([-1, 1]) for _ in range(self.n)]
 
     def is_ideal_function_all_zeros(self):
-        return self.ideal_function == tuple([0 for _ in xrange(self.n)])
+        return self.ideal_function == tuple([0 for _ in range(self.n)])
 
     # TODO: this doesn't output a sample with equal probability
     def get_random_false_sample(self):
@@ -39,23 +39,23 @@ class Conjunction:
         number_of_non_zeros = 0
         indices_of_non_zeros = list()
 
-        for i in xrange(self.n):
-            if self.ideal_function[i] is not 0:
+        for i in range(self.n):
+            if self.ideal_function[i] != 0:
                 number_of_non_zeros += 1
                 indices_of_non_zeros.append(i)
 
         random_number_of_falses_in_sample = randint(1, number_of_non_zeros)
         indices_that_contradict_function = list()
 
-        for i in xrange(random_number_of_falses_in_sample):
+        for i in range(random_number_of_falses_in_sample):
             index = choice(indices_of_non_zeros)
             indices_that_contradict_function.append(index)
             indices_of_non_zeros.remove(index)
 
-        for i in xrange(self.n):
+        for i in range(self.n):
             if i in indices_that_contradict_function:
                 false_sample.append(-1 * self.ideal_function[i])
-            elif self.ideal_function[i] is not 0:
+            elif self.ideal_function[i] != 0:
                 false_sample.append(self.ideal_function[i])
             else:
                 false_sample.append(choice([-1, 1]))
@@ -69,7 +69,7 @@ class Conjunction:
         index = -1
         for i in function:
             index += 1
-            if i is 0:
+            if i == 0:
                 continue
             if i != sample[index]:
                 return False

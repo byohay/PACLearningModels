@@ -1,4 +1,3 @@
-from itertools import izip
 import random
 from LearningModels.evolvability.with_population.natural_process_mutation_calculator import \
     NaturalProcessMutationCalculator
@@ -24,7 +23,7 @@ class RecombinationProcess(NaturalProcessMutationCalculator):
 
         single_descendant = list()
 
-        for i, j in izip(first_rep, second_rep):
+        for i, j in zip(first_rep, second_rep):
             single_descendant.append((random.choice([i, j])))
 
         return tuple(single_descendant)

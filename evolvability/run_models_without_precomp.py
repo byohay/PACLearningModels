@@ -67,7 +67,7 @@ def learn_single_time__classic_model(common_classes):
 def learn_recombination(common_classes, number_of_activations):
     total_number_of_generations = 0
     common_classes.create_recombination_process(common_classes.get_HGT_factor())
-    for _ in xrange(number_of_activations):
+    for _ in range(number_of_activations):
         current_generation_number = learn_single_time__recombination(common_classes)
         total_number_of_generations += current_generation_number
 
@@ -81,7 +81,7 @@ def learn_HGT(common_classes, number_of_activations):
     HGT_factor = common_classes.get_HGT_factor()
     common_classes.create_next_HGT_process(HGT_factor)
 
-    for _ in xrange(number_of_activations):
+    for _ in range(number_of_activations):
         current_generation_number = learn_single_time__HGT(common_classes)
         total_number_of_generations += current_generation_number
 
@@ -93,7 +93,7 @@ def learn_HGT(common_classes, number_of_activations):
 def learn_classical_model(common_classes, number_of_activations):
     total_number_of_generations = 0
 
-    for _ in xrange(number_of_activations):
+    for _ in range(number_of_activations):
         current_generation_number = learn_single_time__classic_model(common_classes)
         total_number_of_generations += current_generation_number
 
@@ -107,7 +107,7 @@ def run_in_parallel(common_classes, number_of_activations, function_to_run,
 
     if is_parallel:
         avg_number_of_generations = sum(parallel(delayed(function_to_run)(common_classes, number_of_activations / number_of_parallel)
-                                                 for _ in xrange(number_of_parallel))) / number_of_parallel
+                                                 for _ in range(number_of_parallel))) / number_of_parallel
     else:
         avg_number_of_generations = function_to_run(common_classes, number_of_activations)
 

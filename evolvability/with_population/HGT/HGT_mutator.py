@@ -29,5 +29,5 @@ class HGT_Mutator(MutatorOfPopulation):
             if len(feas) > 0:
                 next_population.append(self.get_one_of_the_list(feas))
 
-#            print "Now at " + str(len(next_population)) + " reps"
+#            print("Now at " + str(len(next_population)) + " reps")
         return next_population

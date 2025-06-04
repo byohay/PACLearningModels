@@ -23,7 +23,7 @@ class TestConjunction(unittest.TestCase):
         self.assertEqual(True, self.conjunction.is_function_answering_yes_on_sample(x, function))
 
     def test_get_random_false_sample(self):
-        for i in xrange(10000):
+        for i in range(10000):
             function = [1, 1, -1, 0, -1, 0]
             self.conjunction.ideal_function = function
 

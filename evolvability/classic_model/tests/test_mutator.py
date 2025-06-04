@@ -1,6 +1,6 @@
 import unittest
 
-from mock.mock import Mock
+from unittest.mock import Mock
 
 from LearningModels.evolvability.classic_model.mutator import Mutator
 

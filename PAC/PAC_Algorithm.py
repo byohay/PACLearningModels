@@ -1,4 +1,3 @@
-from itertools import izip
 from math import log
 from random import randint
 
@@ -7,13 +6,13 @@ class PAC_Algorithm:
     def __init__(self, oracle, n):
         self.oracle = oracle
         self.n = n
-        self.positive = [1 for r in xrange(self.n)]
-        self.negative = [-1 for i in xrange(self.n)]
+        self.positive = [1 for r in range(self.n)]
+        self.negative = [-1 for i in range(self.n)]
 
     def get_current_hypo(self):
         current_hypo = list()
         index = 0
-        for pos, neg in izip(self.positive, self.negative):
+        for pos, neg in zip(self.positive, self.negative):
             if pos == 0 and neg == 0:
                 current_hypo.append(0)
             elif pos == 0:
@@ -45,6 +44,6 @@ class PAC_Algorithm:
 
             self.eliminate_unfit_from_current_hypo(sample)
             i += 1
-            print "sample " + str(i)
+            print("sample " + str(i))
 
         return self.get_current_hypo()

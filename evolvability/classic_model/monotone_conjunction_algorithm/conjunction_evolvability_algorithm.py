@@ -16,21 +16,21 @@ class ConjunctionEvolvabilityAlgorithm(MonotoneConjunctionAlgorithm):
         number_of_generations = self.length * (log(self.length / epsilon))
 
         i = 0
-        current_rep = tuple([0 for _ in xrange(self.length)])
+        current_rep = tuple([0 for _ in range(self.length)])
 
         while i <= number_of_generations:
             i += 1
             current_rep = self.mutator.evolutionary_step(current_rep)
 
             if current_rep == self.mutator.performance.concept_class.ideal_function:
-                print "EXACT MATCH!"
+                print("EXACT MATCH!")
                 return current_rep
-            print "current is: " + str(current_rep)
+            print("current is: " + str(current_rep))
 
         return current_rep
 
     def get_random_function(self):
-        return tuple([randint(0, 1) for _ in xrange(self.length)])
+        return tuple([randint(0, 1) for _ in range(self.length)])
 
     def learn_ideal_function_until_match(self):
         generation_number = 0
@@ -52,5 +52,5 @@ class ConjunctionEvolvabilityAlgorithm(MonotoneConjunctionAlgorithm):
             current_rep = self.mutator.evolutionary_step_feas(current_rep)
             performance_in_generations.append(self.performance_oracle.get_real_performance(current_rep))
 
-        print len(performance_in_generations)
+        print(len(performance_in_generations))
         return performance_in_generations

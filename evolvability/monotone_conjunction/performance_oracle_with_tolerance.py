@@ -18,14 +18,14 @@ class PerformanceOracleWithTolerance(object):
         in_ideal_not_in_rep = 0
 
         for i, j in zip(representation, conjunction):
-            if i is 1 or j is 1:
+            if i == 1 or j == 1:
                 union += 1
 
-            if i is 1 and j is 1:
+            if i == 1 and j == 1:
                 intersection += 1
-            elif i is 1 and j is 0:
+            elif i == 1 and j == 0:
                 in_rep_not_in_ideal += 1
-            elif i is 0 and j is 1:
+            elif i == 0 and j == 1:
                 in_ideal_not_in_rep += 1
 
         real_perf = Decimal(2**-union) + (Decimal(1) - Decimal(2**-intersection)) + Decimal(2**-intersection)*(Decimal(1) - Decimal(2**-in_rep_not_in_ideal)) *\
