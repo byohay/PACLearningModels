@@ -16,7 +16,6 @@ from evolvability.with_population.HGT.HGT_process import HGTProcess
 from evolvability.with_population.neighborhood import NeighborhoodWithOtherRepresentations
 from evolvability.with_population.recombination.recombination_process import RecombinationProcess
 
-__author__ = 'yben_000'
 
 
 class CommonClassesCreator(object):

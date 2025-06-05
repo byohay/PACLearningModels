@@ -1,7 +1,6 @@
 import unittest
 from conjunction import Conjunction
 
-__author__ = 'yben_000'
 
 
 class TestConjunction(unittest.TestCase):

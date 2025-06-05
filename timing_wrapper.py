@@ -1,6 +1,5 @@
 import time
 
-__author__ = 'yben_000'
 
 
 def timing(f):

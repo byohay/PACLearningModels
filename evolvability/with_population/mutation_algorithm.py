@@ -1,6 +1,5 @@
 from evolvability.monotone_conjunction.algorithm import MonotoneConjunctionAlgorithm
 
-__author__ = 'yben_000'
 
 
 class MutationAlgorithm(MonotoneConjunctionAlgorithm):

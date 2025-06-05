@@ -4,17 +4,16 @@ from unittest.mock import Mock
 
 from evolvability.monotone_conjunction.performance_oracle import PerformanceOracle
 
-__author__ = 'yben_000'
 
 
 class TestPerformanceOracle(unittest.TestCase):
     def setUp(self):
         self.concept_class = Mock()
+        self.concept_class.get_random_sample.return_value = [1, -1, 1]
         self.representation_class = [(0, 1, 1)]
         selection_size = 5
 
-        self.performance_oracle = PerformanceOracle(self.concept_class, self.representation_class,
-                                                    selection_size)
+        self.performance_oracle = PerformanceOracle(self.concept_class, selection_size)
 
     def test_simple_perf(self):
 

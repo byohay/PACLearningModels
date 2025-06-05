@@ -1,6 +1,5 @@
 from evolvability.classic_model.mutation_probability import MutationProbability
 
-__author__ = 'yben_000'
 
 
 class ConjunctionMutationProbability(MutationProbability):

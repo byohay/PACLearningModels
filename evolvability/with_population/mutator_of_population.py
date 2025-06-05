@@ -1,7 +1,6 @@
 from decimal import Decimal
 from random import choice
 
-__author__ = 'yben_000'
 
 
 class MutatorOfPopulation(object):

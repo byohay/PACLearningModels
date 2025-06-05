@@ -1,6 +1,5 @@
 from numpy import random
 
-__author__ = 'yben_000'
 
 
 class DNFOneSidePerformanceOracleWithTolerance(object):

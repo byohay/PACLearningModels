@@ -3,7 +3,6 @@ import unittest
 from unittest.mock import Mock
 from evolvability.with_population.neighborhood import NeighborhoodWithOtherRepresentations
 
-__author__ = 'yben_000'
 
 
 class TestNeighborhoodWithPopulation(unittest.TestCase):
@@ -15,7 +14,7 @@ class TestNeighborhoodWithPopulation(unittest.TestCase):
         def return_itself(*args):
             return args[0]
 
-        self.mutation_neighborhood.get_neighborhood_of_representation.side_effect = return_itself
+        self.mutation_neighborhood.get_neighborhood_of_rep.side_effect = return_itself
         self.natural_process.get_a_mutation_from_the_reps.side_effect = return_itself
 
     def test_no_mutation(self):
@@ -28,7 +27,7 @@ class TestNeighborhoodWithPopulation(unittest.TestCase):
 
         self.neighborhood_calc.get_neighborhood(first_rep, second_rep)
 
-        self.assertEqual(0, self.mutation_neighborhood.get_neighborhood_of_representation.call_count)
+        self.assertEqual(0, self.mutation_neighborhood.get_neighborhood_of_rep.call_count)
 
     def test_mutation_called_based_on_mutation_factor(self):
         self.mutation_factor = 1
@@ -40,4 +39,4 @@ class TestNeighborhoodWithPopulation(unittest.TestCase):
 
         self.neighborhood_calc.get_neighborhood(first_rep, second_rep)
 
-        self.assertEqual(self.number_of_activations, self.mutation_neighborhood.get_neighborhood_of_representation.call_count)
+        self.assertEqual(self.number_of_activations, self.mutation_neighborhood.get_neighborhood_of_rep.call_count)

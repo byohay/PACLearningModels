@@ -3,7 +3,6 @@ from random import randint
 from evolvability.global_functions import get_selection_size_for_perf
 from evolvability.with_population.mutation_algorithm import MutationAlgorithm
 
-__author__ = 'yben_000'
 
 
 class MutationConjunctionAlgorithm(MutationAlgorithm):

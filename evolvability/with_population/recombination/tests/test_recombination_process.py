@@ -1,7 +1,6 @@
 import unittest
 from evolvability.with_population.recombination.recombination_process import RecombinationProcess
 
-__author__ = 'yben_000'
 
 
 class TestRecombinationProcess(unittest.TestCase):

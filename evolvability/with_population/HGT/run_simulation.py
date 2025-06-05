@@ -7,7 +7,6 @@ from evolvability.global_functions import compute_part
 from monotone_conjunctions import MonotoneConjunction
 from joblib import Parallel, delayed
 
-__author__ = 'yben_000'
 
 
 def get_number_of_generations_of_single_run(common_classes, population_factor=1, mutation_factor=0.1):

@@ -1,6 +1,5 @@
 import random
 
-__author__ = 'yben_000'
 
 
 class NeighborhoodWithOtherRepresentations(object):

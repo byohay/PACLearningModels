@@ -4,7 +4,6 @@ from unittest.mock import Mock
 
 from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_mutation_probability import ConjunctionMutationProbability
 
-__author__ = 'yben_000'
 
 
 class TestConjunctionMutationProbability(unittest.TestCase):

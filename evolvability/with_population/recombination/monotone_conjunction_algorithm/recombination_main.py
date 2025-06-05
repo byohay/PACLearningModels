@@ -6,7 +6,6 @@ from evolvability.with_population.recombination.recombination_process import Rec
 from evolvability.with_population.recombination.recombinator import Recombinator
 from monotone_conjunctions import MonotoneConjunction
 
-__author__ = 'yben_000'
 
 
 def recombination_main():

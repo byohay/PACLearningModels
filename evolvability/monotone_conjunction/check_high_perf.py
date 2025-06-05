@@ -3,7 +3,6 @@ from evolvability.monotone_conjunction.performance_oracle_with_tolerance import 
     PerformanceOracleWithTolerance
 from monotone_conjunctions import MonotoneConjunction
 
-__author__ = 'ben'
 
 
 def check_high_perf():

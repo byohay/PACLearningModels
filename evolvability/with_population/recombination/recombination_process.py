@@ -2,7 +2,6 @@ import random
 from evolvability.with_population.natural_process_mutation_calculator import \
     NaturalProcessMutationCalculator
 
-__author__ = 'yben_000'
 
 
 class RecombinationProcess(NaturalProcessMutationCalculator):

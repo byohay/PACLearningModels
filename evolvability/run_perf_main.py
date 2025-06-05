@@ -7,7 +7,6 @@ from evolvability.monotone_conjunction.performance_oracle import PerformanceOrac
 from evolvability.monotone_conjunction.performance_oracle_with_tolerance import PerformanceOracleWithTolerance
 from monotone_conjunctions import MonotoneConjunction
 
-__author__ = 'yben_000'
 
 
 def get_rep_at_least_as_ideal_for_one_sided(length, concept_class, random_func):

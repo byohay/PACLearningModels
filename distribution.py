@@ -1,4 +1,3 @@
-__author__ = 'yben_000'
 
 
 class Distribution(object):

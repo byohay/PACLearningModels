@@ -4,7 +4,6 @@ from unittest.mock import patch
 from evolvability.with_population.HGT.HGT_process_constant_genes_number import \
     HGTProcessConstantGenesNumber
 
-__author__ = 'yben_000'
 
 
 class TestHGTProcess(unittest.TestCase):

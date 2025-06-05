@@ -12,7 +12,6 @@ from evolvability.with_population.monotone_conjunction_algorithm.constant_popula
 from evolvability.with_population.recombination.recombinator import Recombinator
 from monotone_conjunctions import MonotoneConjunction
 
-__author__ = 'yben_000'
 
 
 def get_params_for_mutator(common_classes):

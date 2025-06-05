@@ -1,6 +1,5 @@
 from evolvability.with_population.mutator_of_population import MutatorOfPopulation
 
-__author__ = 'yben_000'
 
 
 class HGT_Mutator(MutatorOfPopulation):

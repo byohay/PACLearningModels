@@ -1,7 +1,6 @@
 from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import \
     MonotoneConjunctionNeighborhood
 
-__author__ = 'yben_000'
 
 
 class PrecompMonotoneConjunctionNeighborhood(MonotoneConjunctionNeighborhood):

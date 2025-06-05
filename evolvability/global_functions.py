@@ -1,6 +1,5 @@
 from math import log
 
-__author__ = 'yben_000'
 
 
 def get_set_of_all_representations_with_length(length):

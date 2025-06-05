@@ -1,7 +1,6 @@
 from decimal import Decimal
 from numpy import random
 
-__author__ = 'yben_000'
 
 class PerformanceOracleWithTolerance(object):
     def __init__(self, concept_class, tolerance_param):

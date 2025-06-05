@@ -3,7 +3,6 @@ from PAC.PAC_oracle import PAC_Oracle
 from conjunction import Conjunction
 from uniform_distribution import UniformDistribution
 
-__author__ = 'yben_000'
 
 
 def main():

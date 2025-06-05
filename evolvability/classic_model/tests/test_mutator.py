@@ -4,7 +4,6 @@ from unittest.mock import Mock
 
 from evolvability.classic_model.mutator import Mutator
 
-__author__ = 'yben_000'
 
 
 class TestMutator(unittest.TestCase):
@@ -27,7 +26,7 @@ class TestMutator(unittest.TestCase):
         neighborhood.add((1, 1, 0, 0))
         neighborhood.add((1, 0, 0, 1))
 
-        self.neighborhood.get_neighborhood_of_representation.return_value = neighborhood
+        self.neighborhood.get_neighborhood_of_rep.return_value = neighborhood
 
     def test_mutator__one_in_bene(self):
         representation = (1, 1, 0, 1)
@@ -55,6 +54,6 @@ class TestMutator(unittest.TestCase):
         self.expected_rep.add((0, 0, 0, 0))
 
         self.performance.get_estimated_performance.return_value = 0
-        self.neighborhood.get_neighborhood_of_representation.return_value = self.expected_rep
+        self.neighborhood.get_neighborhood_of_rep.return_value = self.expected_rep
 
         self.assertIn(self.mutator.evolutionary_step(representation), self.expected_rep)

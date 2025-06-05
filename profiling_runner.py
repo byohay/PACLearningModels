@@ -9,7 +9,6 @@ from evolvability.with_population.HGT.run_simulation import\
 from evolvability.with_population.recombination.run_simulation import recombination_simulations_main, \
     recombination_simulations_main__population_factor
 
-__author__ = 'yben_000'
 
 
 def main():

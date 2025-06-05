@@ -2,7 +2,6 @@ from numpy import random
 
 from evolvability.monotone_conjunction.performance_oracle_with_tolerance import PerformanceOracleWithTolerance
 
-__author__ = 'yben_000'
 
 
 class PerformanceOracleWithPrecomp(PerformanceOracleWithTolerance):

@@ -1,7 +1,6 @@
 from random import choice
 from distribution import Distribution
 
-__author__ = 'yben_000'
 
 
 class UniformDistribution(Distribution):

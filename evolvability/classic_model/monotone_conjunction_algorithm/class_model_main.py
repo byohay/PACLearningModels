@@ -4,7 +4,6 @@ from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolv
 from evolvability.classic_model.mutator import Mutator
 from monotone_conjunctions import MonotoneConjunction
 
-__author__ = 'yben_000'
 
 
 def main():

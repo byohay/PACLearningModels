@@ -1,6 +1,5 @@
 from random import choice
 
-__author__ = 'yben_000'
 
 
 class DNF:

@@ -1,7 +1,6 @@
 from random import choice
 from time import time
 
-__author__ = 'yben_000'
 
 
 class PerformanceOracle:

@@ -22,7 +22,6 @@ from evolvability.with_population.neighborhood import NeighborhoodWithOtherRepre
 from evolvability.with_population.recombination.recombination_process import RecombinationProcess
 from evolvability.with_population.recombination.recombinator import Recombinator
 
-__author__ = 'yben_000'
 
 
 def learn_DNF__recombination():

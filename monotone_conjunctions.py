@@ -1,7 +1,6 @@
 from random import choice
 from conjunction import Conjunction
 
-__author__ = 'yben_000'
 
 
 class MonotoneConjunction(Conjunction):

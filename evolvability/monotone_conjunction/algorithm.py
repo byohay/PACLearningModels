@@ -1,6 +1,5 @@
 from decimal import Decimal
 
-__author__ = 'yben_000'
 
 
 class MonotoneConjunctionAlgorithm(object):

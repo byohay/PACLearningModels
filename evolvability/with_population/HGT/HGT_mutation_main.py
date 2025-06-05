@@ -5,7 +5,6 @@ from evolvability.with_population.HGT.mutation_conjunction_algorithm import HGTC
 from evolvability.with_population.neighborhood import NeighborhoodWithOtherRepresentations
 from monotone_conjunctions import MonotoneConjunction
 
-__author__ = 'yben_000'
 
 
 def HGT_main():

@@ -2,7 +2,6 @@ import random
 from evolvability.with_population.natural_process_mutation_calculator import \
     NaturalProcessMutationCalculator
 
-__author__ = 'yben_000'
 
 
 class HGTProcess(NaturalProcessMutationCalculator):
@@ -49,7 +48,7 @@ class HGTProcess(NaturalProcessMutationCalculator):
             return first_rep
 
         single_mutation = list(first_rep)
-        genes_indices = range(self.length)
+        genes_indices = list(range(self.length))
         genes_transferring = self.get_number_of_genes_transferring()
 
         for _ in range(genes_transferring):

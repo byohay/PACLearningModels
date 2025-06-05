@@ -1,6 +1,5 @@
 from evolvability.with_population.HGT.HGT_process import HGTProcess
 
-__author__ = 'yben_000'
 
 
 class HGTProcessConstantGenesNumber(HGTProcess):
