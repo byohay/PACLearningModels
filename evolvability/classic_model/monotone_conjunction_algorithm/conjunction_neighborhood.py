@@ -1,7 +1,4 @@
-import distance
-
 from evolvability.classic_model.neighborhood import Neighborhood
-
 
 
 class MonotoneConjunctionNeighborhood(Neighborhood):
@@ -9,10 +6,25 @@ class MonotoneConjunctionNeighborhood(Neighborhood):
         pass
 
     def get_neighborhood_of_rep(self, rep):
-        return self.get_rep_plus_and_rep_minus(rep) | self.get_rep_plus_minus(rep)
+        """
+        Returns the complete neighborhood of a representation.
 
-    def get_rep_plus_minus(self, rep):
-        rep_plus_minus = set()
+        The neighborhood includes:
+        - The representation itself.
+        - All neighbors at Hamming distance 1 (single bit flips).
+        - All neighbors formed by swapping a single 0 to a 1 and a single 1 to a 0.
+        """
+        neighborhood = {tuple(rep)}
+        neighborhood.update(self._get_single_flip_neighbors(rep))
+        neighborhood.update(self._get_swap_neighbors(rep))
+        return neighborhood
+
+    def _get_swap_neighbors(self, rep):
+        """
+        Generates neighbors by swapping a single 0 to a 1 and a single 1 to a 0.
+        This is a specific type of Hamming distance 2 change.
+        """
+        swap_neighbors = set()
         n = len(rep)
         original_rep_list = list(rep)
 
@@ -25,16 +37,19 @@ class MonotoneConjunctionNeighborhood(Neighborhood):
                         candidate = list(original_rep_list)
                         candidate[i] = 1  # Plus operation
                         candidate[j] = 0  # Minus operation
-                        rep_plus_minus.add(tuple(candidate))
-        return rep_plus_minus
+                        swap_neighbors.add(tuple(candidate))
+        return swap_neighbors
 
-    def get_rep_plus_and_rep_minus(self, rep):
-        rep_plus_and_rep_minus = set()
-        rep_plus_and_rep_minus.add(tuple(rep))
+    def _get_single_flip_neighbors(self, rep):
+        """
+        Generates all Hamming distance 1 neighbors of a representation.
+        """
+        neighbors = set()
+        rep_list = list(rep)
 
-        rep = list(rep)
+        for i in range(len(rep_list)):
+            candidate = list(rep_list)
+            candidate[i] = 1 - rep_list[i]
+            neighbors.add(tuple(candidate))
 
-        for i in range(len(rep)):
-            rep_plus_and_rep_minus.add(tuple(rep[:i] + [1 - rep[i]] + rep[i+1:]))
-
-        return rep_plus_and_rep_minus
+        return neighbors
