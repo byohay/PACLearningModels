@@ -1,5 +1,3 @@
-
-
 class PAC_Oracle:
     def __init__(self, concept_class, distribution):
         self.concept_class = concept_class

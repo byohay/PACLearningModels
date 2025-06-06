@@ -2,7 +2,6 @@ import unittest
 from conjunction import Conjunction
 
 
-
 class TestConjunction(unittest.TestCase):
     def setUp(self):
         self.conjunction = Conjunction(6)
@@ -28,4 +27,7 @@ class TestConjunction(unittest.TestCase):
 
             sample = self.conjunction.get_random_false_sample()
 
-            self.assertEqual(False, self.conjunction.is_function_answering_yes_on_sample(sample, function))
+            self.assertEqual(
+                False,
+                self.conjunction.is_function_answering_yes_on_sample(sample, function),
+            )

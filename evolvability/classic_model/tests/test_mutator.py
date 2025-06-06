@@ -5,7 +5,6 @@ from unittest.mock import Mock
 from evolvability.classic_model.mutator import Mutator
 
 
-
 class TestMutator(unittest.TestCase):
     def setUp(self):
         self.neighborhood = Mock()
@@ -16,9 +15,16 @@ class TestMutator(unittest.TestCase):
         epsilon = 1
         self.selection_size = 1
 
-        self.mutator = Mutator(self.neighborhood, self.performance, self.tolerance, self.mutation_probability, epsilon)
+        self.mutator = Mutator(
+            self.neighborhood,
+            self.performance,
+            self.tolerance,
+            self.mutation_probability,
+            epsilon,
+        )
 
         self.tolerance.get_tolerance.return_value = 2**-5
+
     def set_neighborhood(self):
         neighborhood = set()
 

@@ -1,7 +1,6 @@
 from numpy import random
 
 
-
 class OneSidedPerformanceOracleWithTolerance(object):
     def __init__(self, concept_class, tolerance_param):
         self.concept_class = concept_class
@@ -22,10 +21,15 @@ class OneSidedPerformanceOracleWithTolerance(object):
             if i == 0 and j == 1:
                 in_ideal_not_in_rep += 1
 
-        real_perf = 1 - ((2 ** -number_of_ones_in_rep) * (1 - 2 ** -in_ideal_not_in_rep) /
-                         (1 - 2 ** -number_of_ones_in_ideal))
+        real_perf = 1 - (
+            (2**-number_of_ones_in_rep)
+            * (1 - 2**-in_ideal_not_in_rep)
+            / (1 - 2**-number_of_ones_in_ideal)
+        )
 
         return real_perf
 
     def get_estimated_performance(self, representation):
-        return self.get_real_performance(representation) + random.uniform(-self.tolerance_param, self.tolerance_param)
+        return self.get_real_performance(representation) + random.uniform(
+            -self.tolerance_param, self.tolerance_param
+        )

@@ -1,8 +1,8 @@
 from random import choice
-from evolvability.monotone_conjunction.performance_oracle_with_tolerance import \
-    PerformanceOracleWithTolerance
+from evolvability.monotone_conjunction.performance_oracle_with_tolerance import (
+    PerformanceOracleWithTolerance,
+)
 from monotone_conjunctions import MonotoneConjunction
-
 
 
 def check_high_perf():
@@ -20,4 +20,3 @@ def check_high_perf():
             highest_perf_except_for_1 = max(highest_perf_except_for_1, current_perf)
 
     print(highest_perf_except_for_1)
-

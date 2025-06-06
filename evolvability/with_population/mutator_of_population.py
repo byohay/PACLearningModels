@@ -2,7 +2,6 @@ from decimal import Decimal
 from random import choice
 
 
-
 class MutatorOfPopulation(object):
     def __init__(self, neighborhood, performance, tolerance, epsilon):
         self.neighborhood = neighborhood
@@ -23,4 +22,3 @@ class MutatorOfPopulation(object):
                 feas.append(rep)
 
         return feas
-

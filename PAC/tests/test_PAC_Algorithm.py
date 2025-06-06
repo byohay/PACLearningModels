@@ -5,7 +5,6 @@ from unittest.mock import Mock
 from PAC.PAC_Algorithm import PAC_Algorithm
 
 
-
 class TestPACAlgorithm(unittest.TestCase):
     def setUp(self):
         self.oracle = Mock()

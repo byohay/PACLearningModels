@@ -1,6 +1,6 @@
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import \
-    MonotoneConjunctionNeighborhood
-
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import (
+    MonotoneConjunctionNeighborhood,
+)
 
 
 class PrecompMonotoneConjunctionNeighborhood(MonotoneConjunctionNeighborhood):
@@ -10,9 +10,15 @@ class PrecompMonotoneConjunctionNeighborhood(MonotoneConjunctionNeighborhood):
         self.rep_plus_minus_dict = dict()
 
         for rep in representation_class:
-            self.rep_plus_and_rep_minus_dict[rep] = super(PrecompMonotoneConjunctionNeighborhood, self).get_rep_plus_and_rep_minus(rep)
-            self.rep_plus_minus_dict[rep] = super(PrecompMonotoneConjunctionNeighborhood, self).get_rep_plus_minus(rep)
-            self.neighbors_dict[rep] = self.rep_plus_minus_dict[rep] | self.rep_plus_and_rep_minus_dict[rep]
+            self.rep_plus_and_rep_minus_dict[rep] = super(
+                PrecompMonotoneConjunctionNeighborhood, self
+            ).get_rep_plus_and_rep_minus(rep)
+            self.rep_plus_minus_dict[rep] = super(
+                PrecompMonotoneConjunctionNeighborhood, self
+            ).get_rep_plus_minus(rep)
+            self.neighbors_dict[rep] = (
+                self.rep_plus_minus_dict[rep] | self.rep_plus_and_rep_minus_dict[rep]
+            )
 
     def get_neighborhood_of_rep(self, rep):
         return self.neighbors_dict[rep]

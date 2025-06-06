@@ -1,4 +1,3 @@
-
 from numpy import random
 
 
@@ -14,7 +13,9 @@ class Mutator(object):
         probabilities = list()
 
         for rep in list_of_mutations:
-            probabilities.append(self.mutation_probability.get_relational_probability(current_rep, rep, self.epsilon))
+            probabilities.append(
+                self.mutation_probability.get_relational_probability(current_rep, rep, self.epsilon)
+            )
 
         sum_of_prob = sum(probabilities)
         normalized_prob = [prob / sum_of_prob for prob in probabilities]
@@ -24,7 +25,7 @@ class Mutator(object):
     def get_random_choice_from_prob(self, list_of_mutations, normalized_prob):
         list_of_mutations_str = list()
         for mutation in list_of_mutations:
-            list_of_mutations_str.append(''.join([str(x) for x in mutation]))
+            list_of_mutations_str.append("".join([str(x) for x in mutation]))
 
         chosen = random.choice(list_of_mutations_str, p=normalized_prob)
 

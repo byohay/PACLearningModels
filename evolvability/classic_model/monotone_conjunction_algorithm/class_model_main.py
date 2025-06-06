@@ -1,9 +1,11 @@
-from evolvability.monotone_conjunction.common_classes_creator import CommonClassesCreator
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import \
-    ConjunctionEvolvabilityAlgorithm
+from evolvability.monotone_conjunction.common_classes_creator import (
+    CommonClassesCreator,
+)
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import (  # noqa: E501
+    ConjunctionEvolvabilityAlgorithm,
+)  # noqa: E501
 from evolvability.classic_model.mutator import Mutator
 from monotone_conjunctions import MonotoneConjunction
-
 
 
 def main():
@@ -21,6 +23,7 @@ def main():
     hypo = algorithm.learn_ideal_function(epsilon)
 
     print("HYPO IS: " + str(hypo))
+
 
 if __name__ == "__main__":
     main()

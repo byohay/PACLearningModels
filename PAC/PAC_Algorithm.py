@@ -1,5 +1,4 @@
 from math import log
-from random import randint
 
 
 class PAC_Algorithm:
@@ -11,7 +10,6 @@ class PAC_Algorithm:
 
     def get_current_hypo(self):
         current_hypo = list()
-        index = 0
         for pos, neg in zip(self.positive, self.negative):
             if pos == 0 and neg == 0:
                 current_hypo.append(0)
@@ -25,16 +23,14 @@ class PAC_Algorithm:
         return current_hypo
 
     def eliminate_unfit_from_current_hypo(self, sample):
-        index = 0
-        for i in sample:
+        for index, i in enumerate(sample):
             if i == 1:
                 self.negative[index] = 0
             elif i == -1:
                 self.positive[index] = 0
-            index += 1
 
     def learn_ideal_function(self, delta, epsilon):
-        number_of_samples = 2 * self.n / epsilon *(log(2 * self.n) + log(1 / delta))
+        number_of_samples = 2 * self.n / epsilon * (log(2 * self.n) + log(1 / delta))
         i = 0
         while i <= number_of_samples:
             [sample, label] = self.oracle.get_random_sample_with_label()

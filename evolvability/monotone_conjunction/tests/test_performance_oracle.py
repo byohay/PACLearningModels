@@ -5,7 +5,6 @@ from unittest.mock import Mock
 from evolvability.monotone_conjunction.performance_oracle import PerformanceOracle
 
 
-
 class TestPerformanceOracle(unittest.TestCase):
     def setUp(self):
         self.concept_class = Mock()
@@ -17,8 +16,18 @@ class TestPerformanceOracle(unittest.TestCase):
 
     def test_simple_perf(self):
 
-        self.concept_class.is_function_answering_yes_on_sample.side_effect = [True, True, False, False, True, False,
-                                                                              False, True, True, False]
+        self.concept_class.is_function_answering_yes_on_sample.side_effect = [
+            True,
+            True,
+            False,
+            False,
+            True,
+            False,
+            False,
+            True,
+            True,
+            False,
+        ]
 
         representation = [1, 0, 0]
 

@@ -3,7 +3,6 @@ from random import randint
 from evolvability.monotone_conjunction.algorithm import MonotoneConjunctionAlgorithm
 
 
-
 class ConjunctionEvolvabilityAlgorithm(MonotoneConjunctionAlgorithm):
     def __init__(self, mutator, length, epsilon, performance):
         super(ConjunctionEvolvabilityAlgorithm, self).__init__(performance, epsilon)
@@ -49,7 +48,9 @@ class ConjunctionEvolvabilityAlgorithm(MonotoneConjunctionAlgorithm):
 
         while not self.is_representation_similar_to_ideal(current_rep):
             current_rep = self.mutator.evolutionary_step_feas(current_rep)
-            performance_in_generations.append(self.performance_oracle.get_real_performance(current_rep))
+            performance_in_generations.append(
+                self.performance_oracle.get_real_performance(current_rep)
+            )
 
         print(len(performance_in_generations))
         return performance_in_generations

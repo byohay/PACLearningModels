@@ -1,12 +1,10 @@
-
-
 class OneSidedPerformanceOracle:
     def __init__(self, concept_class, selection_size):
         self.concept_class = concept_class
         self.selection_size = selection_size
 
     def get_estimated_performance(self, representation):
-        """ TODO: consider making this with matrix multiplication
+        """TODO: consider making this with matrix multiplication
 
         :param representation:
         :return:

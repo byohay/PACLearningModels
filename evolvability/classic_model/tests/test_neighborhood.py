@@ -1,7 +1,8 @@
 import unittest
 
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import MonotoneConjunctionNeighborhood
-
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import (
+    MonotoneConjunctionNeighborhood,
+)
 
 
 class TestNeighborsFinder(unittest.TestCase):

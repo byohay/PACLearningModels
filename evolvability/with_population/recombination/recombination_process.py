@@ -1,7 +1,7 @@
 import random
-from evolvability.with_population.natural_process_mutation_calculator import \
-    NaturalProcessMutationCalculator
-
+from evolvability.with_population.natural_process_mutation_calculator import (
+    NaturalProcessMutationCalculator,
+)
 
 
 class RecombinationProcess(NaturalProcessMutationCalculator):
@@ -9,7 +9,7 @@ class RecombinationProcess(NaturalProcessMutationCalculator):
         self.rate = rate
 
     def get_a_mutation_from_the_reps(self, first_rep, second_rep):
-        """ For a large number_of_desc, it might be faster to compute in advance all
+        """For a large number_of_desc, it might be faster to compute in advance all
             the possible descendants. It would take 2**n worst case, which is not very
             efficient...
         :param first_rep:

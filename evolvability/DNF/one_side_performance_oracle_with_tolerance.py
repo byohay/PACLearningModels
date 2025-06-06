@@ -1,7 +1,6 @@
 from numpy import random
 
 
-
 class DNFOneSidePerformanceOracleWithTolerance(object):
     def __init__(self, concept_class, tolerance_param, epsilon, conjunction_performance_function):
         self.concept_class = concept_class
@@ -18,7 +17,9 @@ class DNFOneSidePerformanceOracleWithTolerance(object):
         """
         max_perf_with_conjunction = 0
         for conjunction in self.concept_class.get_ideal_function():
-            current_conjunction_perf = self.conjunction_performance_function.get_real_performance(representation, conjunction)
+            current_conjunction_perf = self.conjunction_performance_function.get_real_performance(
+                representation, conjunction
+            )
             max_perf_with_conjunction = max(current_conjunction_perf, max_perf_with_conjunction)
 
         return max_perf_with_conjunction
@@ -32,8 +33,11 @@ class DNFOneSidePerformanceOracleWithTolerance(object):
         """
         average_perf_with_conjunctions = 0
         for conjunction in self.concept_class.get_ideal_function():
-            average_perf_with_conjunctions += \
-                self.conjunction_performance_function.get_real_performance(representation, conjunction)
+            average_perf_with_conjunctions += (
+                self.conjunction_performance_function.get_real_performance(
+                    representation, conjunction
+                )
+            )
 
         return float(average_perf_with_conjunctions) / len(self.concept_class.get_ideal_function())
 
@@ -48,13 +52,16 @@ class DNFOneSidePerformanceOracleWithTolerance(object):
         list_of_perfs = list()
 
         for conjunction in self.concept_class.get_ideal_function():
-            list_of_perfs.append(self.conjunction_performance_function.get_real_performance(representation,
-                                                                                            conjunction))
+            list_of_perfs.append(
+                self.conjunction_performance_function.get_real_performance(
+                    representation, conjunction
+                )
+            )
 
         perf_to_return = max(list_of_perfs)
 
         for i in range(len(list_of_perfs)):
-            perf_to_return -= (1 - list_of_perfs[i])/len(self.concept_class.get_ideal_function())
+            perf_to_return -= (1 - list_of_perfs[i]) / len(self.concept_class.get_ideal_function())
 
         return perf_to_return
 
@@ -62,4 +69,6 @@ class DNFOneSidePerformanceOracleWithTolerance(object):
         return self.get_max_performance_and_others_lower(representation)
 
     def get_estimated_performance(self, representation):
-        return self.get_real_performance(representation) + random.uniform(-self.tolerance_param, self.tolerance_param)
+        return self.get_real_performance(representation) + random.uniform(
+            -self.tolerance_param, self.tolerance_param
+        )

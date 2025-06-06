@@ -4,7 +4,6 @@ from conjunction import Conjunction
 from uniform_distribution import UniformDistribution
 
 
-
 def main():
     length = 10
     concept = Conjunction(length)
@@ -18,6 +17,7 @@ def main():
 
     print("FUNC IS: " + str(function))
     print("HYPO IS: " + str(hypo))
+
 
 if __name__ == "__main__":
     main()

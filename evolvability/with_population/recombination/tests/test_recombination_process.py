@@ -1,6 +1,7 @@
 import unittest
-from evolvability.with_population.recombination.recombination_process import RecombinationProcess
-
+from evolvability.with_population.recombination.recombination_process import (
+    RecombinationProcess,
+)
 
 
 class TestRecombinationProcess(unittest.TestCase):

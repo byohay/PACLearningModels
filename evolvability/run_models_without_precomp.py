@@ -1,17 +1,20 @@
 import cProfile
 import pstats
 from joblib.parallel import Parallel, delayed
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import \
-    ConjunctionEvolvabilityAlgorithm
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import (  # noqa: E501
+    ConjunctionEvolvabilityAlgorithm,
+)
 from evolvability.classic_model.mutator import Mutator
 from evolvability.global_functions import frange
-from evolvability.monotone_conjunction.common_classes_creator import CommonClassesCreator
+from evolvability.monotone_conjunction.common_classes_creator import (
+    CommonClassesCreator,
+)
 from evolvability.with_population.HGT.HGT_mutator import HGT_Mutator
-from evolvability.with_population.monotone_conjunction_algorithm.constant_population_algorithm import \
-    ConstantPopulationMutationConjunctionAlgorithm
+from evolvability.with_population.monotone_conjunction_algorithm.constant_population_algorithm import (  # noqa: E501
+    ConstantPopulationMutationConjunctionAlgorithm,
+)
 from evolvability.with_population.recombination.recombinator import Recombinator
 from monotone_conjunctions import MonotoneConjunction
-
 
 
 def get_params_for_mutator(common_classes):
@@ -33,8 +36,14 @@ def learn_single_time__recombination(common_classes):
     population_size, population_factor = common_classes.get_population_size_and_factor()
 
     recombinator = Recombinator(neighborhood, performance_oracle, tolerance, epsilon)
-    algorithm = ConstantPopulationMutationConjunctionAlgorithm(recombinator, length, epsilon, performance_oracle,
-                                                               population_size, population_factor)
+    algorithm = ConstantPopulationMutationConjunctionAlgorithm(
+        recombinator,
+        length,
+        epsilon,
+        performance_oracle,
+        population_size,
+        population_factor,
+    )
 
     return algorithm.learn_ideal_function_until_match()
 
@@ -45,8 +54,14 @@ def learn_single_time__HGT(common_classes):
     population_size, population_factor = common_classes.get_population_size_and_factor()
 
     HGT_mutator = HGT_Mutator(neighborhood, performance_oracle, tolerance, epsilon, natural_process)
-    algorithm = ConstantPopulationMutationConjunctionAlgorithm(HGT_mutator, length, epsilon, performance_oracle,
-                                                               population_size, population_factor)
+    algorithm = ConstantPopulationMutationConjunctionAlgorithm(
+        HGT_mutator,
+        length,
+        epsilon,
+        performance_oracle,
+        population_size,
+        population_factor,
+    )
 
     return algorithm.learn_ideal_function_until_match()
 
@@ -101,22 +116,45 @@ def learn_classical_model(common_classes, number_of_activations):
     return avg_number_of_generations
 
 
-def run_in_parallel(common_classes, number_of_activations, function_to_run,
-                    parallel, number_of_parallel, is_parallel=True):
+def run_in_parallel(
+    common_classes,
+    number_of_activations,
+    function_to_run,
+    parallel,
+    number_of_parallel,
+    is_parallel=True,
+):
 
     if is_parallel:
-        avg_number_of_generations = sum(parallel(delayed(function_to_run)(common_classes, number_of_activations / number_of_parallel)
-                                                 for _ in range(number_of_parallel))) / number_of_parallel
+        avg_number_of_generations = (
+            sum(
+                parallel(
+                    delayed(function_to_run)(
+                        common_classes, number_of_activations / number_of_parallel
+                    )
+                    for _ in range(number_of_parallel)
+                )
+            )
+            / number_of_parallel
+        )
     else:
         avg_number_of_generations = function_to_run(common_classes, number_of_activations)
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
 
     HGT_factor, mutation_factor, population_factor = common_classes.get_simulation_variables()
 
-    f.write("results for the following parameters: HGT_factor=" + str(HGT_factor) +
-            " mutation factor=" + str(mutation_factor) + " population_factor=" + str(population_factor) +
-            " is: " + str(avg_number_of_generations) + "\n")
+    f.write(
+        "results for the following parameters: HGT_factor="
+        + str(HGT_factor)
+        + " mutation factor="
+        + str(mutation_factor)
+        + " population_factor="
+        + str(population_factor)
+        + " is: "
+        + str(avg_number_of_generations)
+        + "\n"
+    )
 
     f.close()
 
@@ -128,34 +166,49 @@ def compare_with_HGT_factors(common_classes):
     parallel = Parallel(n_jobs=number_of_parallel)
     length, epsilon, mutation_neighborhood, tolerance = common_classes.get_common_classes()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\n~~~HGT rate experiment~~~\n")
     f.write("\npopulation size is " + str(common_classes.get_population_size()))
     f.write("\nlenghth is {0} and epsilon is {1}\n".format(length, epsilon))
     f.close()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nbasic model:\n")
     f.close()
 
-    run_in_parallel(common_classes, number_of_activations, function_to_run=learn_classical_model,
-                    parallel=parallel, number_of_parallel=number_of_parallel)
+    run_in_parallel(
+        common_classes,
+        number_of_activations,
+        function_to_run=learn_classical_model,
+        parallel=parallel,
+        number_of_parallel=number_of_parallel,
+    )
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nHGT:\n")
     f.close()
 
     for HGT_factor in frange(0, 1, 0.1):
         common_classes.set_simulation_variables(HGT_factor, 0.1, 1)
-        run_in_parallel(common_classes, number_of_activations, function_to_run=learn_HGT,
-                        parallel=parallel, number_of_parallel=number_of_parallel)
+        run_in_parallel(
+            common_classes,
+            number_of_activations,
+            function_to_run=learn_HGT,
+            parallel=parallel,
+            number_of_parallel=number_of_parallel,
+        )
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nrecombination:\n")
     f.close()
 
-    run_in_parallel(common_classes, number_of_activations, function_to_run=learn_recombination,
-                    parallel=parallel, number_of_parallel=number_of_parallel)
+    run_in_parallel(
+        common_classes,
+        number_of_activations,
+        function_to_run=learn_recombination,
+        parallel=parallel,
+        number_of_parallel=number_of_parallel,
+    )
 
 
 def compare_with_mutation_factors(common_classes):
@@ -164,38 +217,53 @@ def compare_with_mutation_factors(common_classes):
     parallel = Parallel(n_jobs=number_of_parallel)
     length, epsilon, mutation_neighborhood, tolerance = common_classes.get_common_classes()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\n~~~mutation factor experiment~~~\n")
     f.write("\npopulation size is " + str(common_classes.get_population_size()))
     f.write("\nlenghth is {0} and epsilon is {1}\n".format(length, epsilon))
     f.close()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nHGT 1:\n")
     f.close()
 
     for mutation_factor in frange(0.1, 1, 0.1):
         common_classes.set_simulation_variables(1, mutation_factor, 1)
-        run_in_parallel(common_classes, number_of_activations, function_to_run=learn_HGT,
-                        parallel=parallel, number_of_parallel=number_of_parallel)
+        run_in_parallel(
+            common_classes,
+            number_of_activations,
+            function_to_run=learn_HGT,
+            parallel=parallel,
+            number_of_parallel=number_of_parallel,
+        )
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nHGT 0.1:\n")
     f.close()
 
     for mutation_factor in frange(0.1, 1, 0.1):
         common_classes.set_simulation_variables(0.1, mutation_factor, 1)
-        run_in_parallel(common_classes, number_of_activations, function_to_run=learn_HGT,
-                        parallel=parallel, number_of_parallel=number_of_parallel)
+        run_in_parallel(
+            common_classes,
+            number_of_activations,
+            function_to_run=learn_HGT,
+            parallel=parallel,
+            number_of_parallel=number_of_parallel,
+        )
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nrecombination:\n")
     f.close()
 
     for mutation_factor in frange(0.1, 1, 0.1):
         common_classes.set_simulation_variables(1, mutation_factor, 1)
-        run_in_parallel(common_classes, number_of_activations, function_to_run=learn_recombination,
-                        parallel=parallel, number_of_parallel=number_of_parallel)
+        run_in_parallel(
+            common_classes,
+            number_of_activations,
+            function_to_run=learn_recombination,
+            parallel=parallel,
+            number_of_parallel=number_of_parallel,
+        )
 
 
 def compare_with_population_factors(common_classes):
@@ -205,29 +273,39 @@ def compare_with_population_factors(common_classes):
     parallel = Parallel(n_jobs=number_of_parallel)
     length, epsilon, mutation_neighborhood, tolerance = common_classes.get_common_classes()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\n~~~population factor experiment~~~\n")
     f.write("\npopulation size is " + str(common_classes.get_population_size()))
     f.write("\nlenghth is {0} and epsilon is {1}\n".format(length, epsilon))
     f.close()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nHGT 0.2:\n")
     f.close()
 
     for population_factor in frange(1, 5, 0.5):
         common_classes.set_simulation_variables(0.2, 0.1, population_factor)
-        run_in_parallel(common_classes, number_of_activations, function_to_run=learn_HGT,
-                        parallel=parallel, number_of_parallel=number_of_parallel)
+        run_in_parallel(
+            common_classes,
+            number_of_activations,
+            function_to_run=learn_HGT,
+            parallel=parallel,
+            number_of_parallel=number_of_parallel,
+        )
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nrecombination:\n")
     f.close()
 
     for population_factor in frange(1, 5, 0.5):
         common_classes.set_simulation_variables(0.1, 0.1, population_factor)
-        run_in_parallel(common_classes, number_of_activations, function_to_run=learn_recombination,
-                        parallel=parallel, number_of_parallel=number_of_parallel)
+        run_in_parallel(
+            common_classes,
+            number_of_activations,
+            function_to_run=learn_recombination,
+            parallel=parallel,
+            number_of_parallel=number_of_parallel,
+        )
 
 
 def compare_with_real_data(common_classes):
@@ -237,24 +315,36 @@ def compare_with_real_data(common_classes):
     parallel = Parallel(n_jobs=number_of_parallel)
     length, epsilon, mutation_neighborhood, tolerance = common_classes.get_common_classes()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\n~~~real data experiment~~~\n")
     f.write("\nlenghth is {0} and epsilon is {1}\n".format(length, epsilon))
     f.close()
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nHGT:\n")
     f.close()
 
-    run_in_parallel(common_classes, number_of_activations, function_to_run=learn_HGT,
-                    parallel=parallel, number_of_parallel=number_of_parallel, is_parallel=False)
+    run_in_parallel(
+        common_classes,
+        number_of_activations,
+        function_to_run=learn_HGT,
+        parallel=parallel,
+        number_of_parallel=number_of_parallel,
+        is_parallel=False,
+    )
 
-    f = open('results.txt', 'a')
+    f = open("results.txt", "a")
     f.write("\nrecombination:\n")
     f.close()
 
-    run_in_parallel(common_classes, number_of_activations, function_to_run=learn_recombination,
-                    parallel=parallel, number_of_parallel=number_of_parallel, is_parallel=False)
+    run_in_parallel(
+        common_classes,
+        number_of_activations,
+        function_to_run=learn_recombination,
+        parallel=parallel,
+        number_of_parallel=number_of_parallel,
+        is_parallel=False,
+    )
 
 
 def run_models_without_precomp():

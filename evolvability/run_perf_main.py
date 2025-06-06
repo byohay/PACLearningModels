@@ -1,12 +1,16 @@
 from random import choice
-from evolvability.monotone_conjunction.one_sided_performance_oracle import OneSidedPerformanceOracle
-from evolvability.monotone_conjunction.one_sided_performance_oracle_with_tolerance import \
-    OneSidedPerformanceOracleWithTolerance
+from evolvability.monotone_conjunction.one_sided_performance_oracle import (
+    OneSidedPerformanceOracle,
+)
+from evolvability.monotone_conjunction.one_sided_performance_oracle_with_tolerance import (
+    OneSidedPerformanceOracleWithTolerance,
+)
 
 from evolvability.monotone_conjunction.performance_oracle import PerformanceOracle
-from evolvability.monotone_conjunction.performance_oracle_with_tolerance import PerformanceOracleWithTolerance
+from evolvability.monotone_conjunction.performance_oracle_with_tolerance import (
+    PerformanceOracleWithTolerance,
+)
 from monotone_conjunctions import MonotoneConjunction
-
 
 
 def get_rep_at_least_as_ideal_for_one_sided(length, concept_class, random_func):
@@ -40,6 +44,7 @@ def test_performance_with_tolerance(length):
     print(performance.get_estimated_performance(random_func))
     print(performance_with_tolerance.get_estimated_performance(random_func))
     print()
+
 
 if __name__ == "__main__":
     for i in range(100):

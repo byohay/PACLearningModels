@@ -1,5 +1,3 @@
-
-
 class Distribution(object):
     def __init__(self, concept_class, length):
         self.concept_class = concept_class

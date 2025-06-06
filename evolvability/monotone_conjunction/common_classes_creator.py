@@ -1,21 +1,31 @@
 from decimal import Decimal
-from math import log
 
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_mutation_probability import \
-    ConjunctionMutationProbability
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import \
-    MonotoneConjunctionNeighborhood
-from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_tolerance import \
-    ConjunctionTolerance
-from evolvability.classic_model.monotone_conjunction_algorithm.precomp_neighborhood import \
-    PrecompMonotoneConjunctionNeighborhood
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_mutation_probability import (  # noqa: E501
+    ConjunctionMutationProbability,
+)
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_neighborhood import (
+    MonotoneConjunctionNeighborhood,
+)
+from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_tolerance import (
+    ConjunctionTolerance,
+)
+from evolvability.classic_model.monotone_conjunction_algorithm.precomp_neighborhood import (
+    PrecompMonotoneConjunctionNeighborhood,
+)
 from evolvability.global_functions import get_set_of_all_representations_with_length
-from evolvability.monotone_conjunction.performance_oracle_with_precomp import PerformanceOracleWithPrecomp
-from evolvability.monotone_conjunction.performance_oracle_with_tolerance import PerformanceOracleWithTolerance
+from evolvability.monotone_conjunction.performance_oracle_with_precomp import (
+    PerformanceOracleWithPrecomp,
+)
+from evolvability.monotone_conjunction.performance_oracle_with_tolerance import (
+    PerformanceOracleWithTolerance,
+)
 from evolvability.with_population.HGT.HGT_process import HGTProcess
-from evolvability.with_population.neighborhood import NeighborhoodWithOtherRepresentations
-from evolvability.with_population.recombination.recombination_process import RecombinationProcess
-
+from evolvability.with_population.neighborhood import (
+    NeighborhoodWithOtherRepresentations,
+)
+from evolvability.with_population.recombination.recombination_process import (
+    RecombinationProcess,
+)
 
 
 class CommonClassesCreator(object):
@@ -33,7 +43,9 @@ class CommonClassesCreator(object):
 
         if is_neigh_precomp:
             self.representation_class = get_set_of_all_representations_with_length(self.length)
-            self.mutation_neighborhood = PrecompMonotoneConjunctionNeighborhood(self.representation_class)
+            self.mutation_neighborhood = PrecompMonotoneConjunctionNeighborhood(
+                self.representation_class
+            )
         else:
             self.mutation_neighborhood = MonotoneConjunctionNeighborhood()
 
@@ -73,11 +85,13 @@ class CommonClassesCreator(object):
     def get_number_of_activations(self):
         return self.number_of_activations
 
-
     def get_neighborhood_with_other_representations(self, mutation_factor):
-        return NeighborhoodWithOtherRepresentations(self.number_of_mutations_from_mutator,
-                                                    self.mutation_neighborhood,
-                                                    mutation_factor, self.natural_process)
+        return NeighborhoodWithOtherRepresentations(
+            self.number_of_mutations_from_mutator,
+            self.mutation_neighborhood,
+            mutation_factor,
+            self.natural_process,
+        )
 
     def create_next_HGT_process(self, HGT_factor):
         self.natural_process = HGTProcess(HGT_factor, self.length)

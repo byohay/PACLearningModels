@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 
-
 class MonotoneConjunctionAlgorithm(object):
     def __init__(self, performance_oracle, epsilon):
         self.performance_oracle = performance_oracle
@@ -23,4 +22,6 @@ class MonotoneConjunctionAlgorithm(object):
         return max_perf
 
     def is_representation_similar_to_ideal(self, rep):
-        return Decimal(1) - self.performance_oracle.get_real_performance(rep) < Decimal(self.epsilon)
+        return Decimal(1) - self.performance_oracle.get_real_performance(rep) < Decimal(
+            self.epsilon
+        )

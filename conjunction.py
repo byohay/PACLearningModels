@@ -1,7 +1,6 @@
 from random import randint, choice
 
 
-
 class Conjunction:
     def __init__(self, n):
         self.n = n

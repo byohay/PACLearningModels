@@ -1,17 +1,17 @@
 from random import randint
 
-from evolvability.global_functions import get_selection_size_for_perf
 from evolvability.with_population.mutation_algorithm import MutationAlgorithm
-
 
 
 class MutationConjunctionAlgorithm(MutationAlgorithm):
     def __init__(self, mutator, length, epsilon, performance_oracle, population_factor=1):
-        super(MutationConjunctionAlgorithm, self).__init__(mutator, length, epsilon, performance_oracle)
+        super(MutationConjunctionAlgorithm, self).__init__(
+            mutator, length, epsilon, performance_oracle
+        )
 
         self.number_of_processors = self.length / 10
         self.parallel_time_steps = 3 * self.length / self.number_of_processors
-        """ This number is taken from Kanade's reduction. The reduction needs a population of the number of processors
+        """ This number is taken from Kanade's reduction. The reduction needs a population of the number of processors  # noqa: E501
             to the power of 7.
             Afterwards, he shows that the parallel CSQ can learn conjunctions in constant time, that is,
             it needs 3n queries to be made.
@@ -22,7 +22,9 @@ class MutationConjunctionAlgorithm(MutationAlgorithm):
             If I choose the number sqrt(n), we will need 3*sqrt(n) time steps to get all the needed queries.
             For n=10, an appropriate number of processors will be 1/5*n, so that n^7 is the population size.
         """
-        self.population_size = (self.number_of_processors**7)*self.parallel_time_steps * population_factor
+        self.population_size = (
+            (self.number_of_processors**7) * self.parallel_time_steps * population_factor
+        )
 
     def get_random_function(self):
         return [randint(0, 1) for _ in range(self.length)]

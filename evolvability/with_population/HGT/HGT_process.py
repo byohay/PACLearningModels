@@ -1,7 +1,7 @@
 import random
-from evolvability.with_population.natural_process_mutation_calculator import \
-    NaturalProcessMutationCalculator
-
+from evolvability.with_population.natural_process_mutation_calculator import (
+    NaturalProcessMutationCalculator,
+)
 
 
 class HGTProcess(NaturalProcessMutationCalculator):
@@ -21,7 +21,7 @@ class HGTProcess(NaturalProcessMutationCalculator):
             self.fraction_of_reps_that_has_1.append(float(summation) / len(population))
 
     def get_a_mutation_from_the_reps(self, first_rep, other_population):
-        """ This method gets a single representations and a population of representations.
+        """This method gets a single representations and a population of representations.
             It starts from the single one and mutates according to the HGT_factor.
             If the HGT_factor is high, there is a high chance of mutating according to other_population.
             It is based on the following assumption:
@@ -35,7 +35,7 @@ class HGTProcess(NaturalProcessMutationCalculator):
             in the right index.
 
             To conclude, we need to do the following computation: the probability to receive a gene
-            at the right index is: HGT_factor*(1/n)*(number_of_representations_with_this_gene_in_the_population)
+            at the right index is: HGT_factor*(1/n)*(number_of_representations_with_this_gene_in_the_population)  # noqa: E501
 
             UPDATE: to make it more realistic, we move only ONE GENE and don't divide the probability by
                     the length of the genome.
@@ -54,9 +54,14 @@ class HGTProcess(NaturalProcessMutationCalculator):
         for _ in range(genes_transferring):
             gene_index = self.get_random_gene_index(genes_indices)
 
-            if self.is_chance_of_gene_passing_occurred() and\
-               random.random() < self.get_fraction_of_reps_with_gene(gene_index, single_mutation[gene_index]):
-                single_mutation[gene_index] = 1-single_mutation[gene_index]
+            if (
+                self.is_chance_of_gene_passing_occurred()
+                and random.random()
+                < self.get_fraction_of_reps_with_gene(
+                    gene_index, single_mutation[gene_index]
+                )  # noqa: E501
+            ):
+                single_mutation[gene_index] = 1 - single_mutation[gene_index]
 
             genes_indices.remove(gene_index)
 
@@ -72,7 +77,7 @@ class HGTProcess(NaturalProcessMutationCalculator):
         return random.random() < self.chance_to_pass_genes
 
     def get_fraction_of_reps_with_gene(self, gene_index, value):
-        """ For value == 0 it should return self.fraction_of_reps_that_has_1[gene_index]
-            For value == 1 it should return 1 - self.fraction_of_reps_that_has_1[gene_index]
+        """For value == 0 it should return self.fraction_of_reps_that_has_1[gene_index]
+        For value == 1 it should return 1 - self.fraction_of_reps_that_has_1[gene_index]
         """
         return value + (1 - 2 * value) * self.fraction_of_reps_that_has_1[gene_index]

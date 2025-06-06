@@ -1,9 +1,8 @@
 import unittest
-from evolvability.with_population.HGT.HGT_process import HGTProcess
 from unittest.mock import patch
-from evolvability.with_population.HGT.HGT_process_constant_genes_number import \
-    HGTProcessConstantGenesNumber
-
+from evolvability.with_population.HGT.HGT_process_constant_genes_number import (
+    HGTProcessConstantGenesNumber,
+)
 
 
 class TestHGTProcess(unittest.TestCase):
@@ -26,7 +25,7 @@ class TestHGTProcess(unittest.TestCase):
         gene_index = 2
         self.HGT_process.compute_percent_of_number_of_reps_in_population(self.population)
 
-        with patch.object(self.HGT_process, 'get_random_gene_index') as mock_func:
+        with patch.object(self.HGT_process, "get_random_gene_index") as mock_func:
             mock_func.return_value = gene_index
 
             mutated_rep = self.HGT_process.get_a_mutation_from_the_reps(self.rep, self.population)
@@ -42,9 +41,11 @@ class TestHGTProcess(unittest.TestCase):
 
     def test_HGT_process_3_times(self):
         number_of_genes = 3
-        self.HGT_process = HGTProcessConstantGenesNumber(self.HGT_factor, self.length, number_of_genes)
+        self.HGT_process = HGTProcessConstantGenesNumber(
+            self.HGT_factor, self.length, number_of_genes
+        )
 
-        with patch.object(self.HGT_process, 'get_fraction_of_reps_with_gene') as mock_func:
+        with patch.object(self.HGT_process, "get_fraction_of_reps_with_gene") as mock_func:
             mock_func.return_value = 1
             mutated_rep = self.HGT_process.get_a_mutation_from_the_reps(self.rep, self.population)
             self.assertEqual((1, 0, 1), mutated_rep)

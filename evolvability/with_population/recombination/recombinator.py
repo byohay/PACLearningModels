@@ -1,6 +1,4 @@
-import random
 from evolvability.with_population.mutator_of_population import MutatorOfPopulation
-
 
 
 class Recombinator(MutatorOfPopulation):
@@ -8,8 +6,10 @@ class Recombinator(MutatorOfPopulation):
         super(Recombinator, self).__init__(neighborhood, performance, tolerance, epsilon)
 
     def get_min_perf_of_parents(self, first_rep, second_rep):
-        return min(self.performance.get_estimated_performance(first_rep),
-                   self.performance.get_estimated_performance(second_rep))
+        return min(
+            self.performance.get_estimated_performance(first_rep),
+            self.performance.get_estimated_performance(second_rep),
+        )
 
     def get_next_population(self, current_population):
         next_population = list()
@@ -28,4 +28,3 @@ class Recombinator(MutatorOfPopulation):
                 next_population.append(self.get_one_of_the_list(feas))
 
         return next_population
-
