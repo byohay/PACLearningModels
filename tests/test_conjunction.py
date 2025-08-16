@@ -1,33 +1,35 @@
-import unittest
+from typing import List
+
 from conjunction import Conjunction
 
 
-class TestConjunction(unittest.TestCase):
-    def setUp(self):
-        self.conjunction = Conjunction(6)
+def test_is_function_answering_yes_on_sample__answer_no() -> None:
+    """Tests if is_function_answering_yes_on_sample correctly returns False."""
+    conjunction = Conjunction(6)
+    function: List[int] = [1, 1, -1, 0, -1, 0]
 
-    def test_is_function_answering_yes_on_sample__answer_no(self):
-        function = [1, 1, -1, 0, -1, 0]
+    x: List[int] = [1, 1, 1, 1, -1, 1]
 
-        x = [1, 1, 1, 1, -1, 1]
+    assert not conjunction.is_function_answering_yes_on_sample(x, function)
 
-        self.assertEqual(False, self.conjunction.is_function_answering_yes_on_sample(x, function))
 
-    def test_is_function_answering_yes_on_sample__answer_yes(self):
-        function = [1, 1, -1, 0, -1, 0]
+def test_is_function_answering_yes_on_sample__answer_yes() -> None:
+    """Tests if is_function_answering_yes_on_sample correctly returns True."""
+    conjunction = Conjunction(6)
+    function: List[int] = [1, 1, -1, 0, -1, 0]
 
-        x = [1, 1, -1, 1, -1, 1]
+    x: List[int] = [1, 1, -1, 1, -1, 1]
 
-        self.assertEqual(True, self.conjunction.is_function_answering_yes_on_sample(x, function))
+    assert conjunction.is_function_answering_yes_on_sample(x, function)
 
-    def test_get_random_false_sample(self):
-        for i in range(10000):
-            function = [1, 1, -1, 0, -1, 0]
-            self.conjunction.ideal_function = function
 
-            sample = self.conjunction.get_random_false_sample()
+def test_get_random_false_sample() -> None:
+    """Tests if get_random_false_sample generates a sample that returns False."""
+    conjunction = Conjunction(6)
+    for i in range(10000):
+        function: List[int] = [1, 1, -1, 0, -1, 0]
+        conjunction.ideal_function = function
 
-            self.assertEqual(
-                False,
-                self.conjunction.is_function_answering_yes_on_sample(sample, function),
-            )
+        sample: List[int] = conjunction.get_random_false_sample()
+
+        assert not conjunction.is_function_answering_yes_on_sample(sample, function)
