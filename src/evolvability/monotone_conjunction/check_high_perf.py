@@ -1,4 +1,5 @@
 from random import choice
+
 from evolvability.monotone_conjunction.performance_oracle_with_tolerance import (
     PerformanceOracleWithTolerance,
 )

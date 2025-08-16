@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "learningmodels"
+name = "paclearningmodels"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Ben Yohay"]
 packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
@@ -11,11 +11,13 @@ numpy = "^1.26.4"
 matplotlib = "^3.8.3"
 scipy = "^1.12.0"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.1.1"
-ruff = "^0.3.5"
-isort = "^5.13.2"
-pytest-mock = "^3.14.1"
+[dependency-groups]
+dev = [
+  "pytest>=8.1.1,<9",
+  "ruff>=0.3.5,<1",
+  "isort>=5.13.2,<6",
+  "pytest-mock>=3.14.1,<4"
+]
 
 [build-system]
 requires = ["poetry-core"]
@@ -26,7 +28,9 @@ line-length = 100
 
 [tool.ruff]
 line-length = 100
-select = ["E", "F", "I"] # Error, Flake8, Isort
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "TID25"] # Error, Flake8, Isort
 ignore = ["E501"] # Line too long, handled by black
 
 [tool.isort]

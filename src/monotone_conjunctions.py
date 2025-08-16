@@ -1,4 +1,5 @@
 from random import choice
+
 from conjunction import Conjunction
 
 

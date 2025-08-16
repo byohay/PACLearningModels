@@ -1,6 +1,6 @@
+from conjunction import Conjunction
 from PAC.PAC_Algorithm import PAC_Algorithm
 from PAC.PAC_oracle import PAC_Oracle
-from conjunction import Conjunction
 from uniform_distribution import UniformDistribution
 
 

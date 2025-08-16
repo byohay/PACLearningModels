@@ -1,4 +1,4 @@
-from typing import Set, Tuple, List
+from typing import List, Set, Tuple
 
 import pytest
 from pytest_mock.plugin import MockerFixture
@@ -32,25 +32,29 @@ def set_return_value_of_get_rep_plus_and_rep_minus(
 
 def test_get_probability_of_rep_from_plus(
     conjunction_mutation_probability: ConjunctionMutationProbability,
-    set_return_value_of_get_rep_plus_and_rep_minus: None, # pylint: disable=W0613
+    set_return_value_of_get_rep_plus_and_rep_minus: None,  # pylint: disable=W0613
 ) -> None:
     """Tests the probability calculation for a representation from the plus group."""
     representation: List[int] = [1, 1, 0, 1]
 
-    probability = conjunction_mutation_probability.get_relational_probability(representation, (1, 0, 0, 1), 1)
+    probability = conjunction_mutation_probability.get_relational_probability(
+        representation, (1, 0, 0, 1), 1
+    )
     assert probability == 0.125
 
 
 def test_get_probability_of_rep_from_plus_minus(
     conjunction_mutation_probability: ConjunctionMutationProbability,
-    set_return_value_of_get_rep_plus_and_rep_minus: None, # pylint: disable=W0613
+    set_return_value_of_get_rep_plus_and_rep_minus: None,  # pylint: disable=W0613
 ) -> None:
     """Tests the probability calculation when the representation itself is in the plus-minus group."""
     representation: List[int] = [0, 0, 0, 0]
 
-    conjunction_mutation_probability.neighborhood_finder.get_rep_plus_minus.return_value = [(
-        0, 0, 0, 0
-    )]
+    conjunction_mutation_probability.neighborhood_finder.get_rep_plus_minus.return_value = [
+        (0, 0, 0, 0)
+    ]
 
-    probability = conjunction_mutation_probability.get_relational_probability(representation, (0, 0, 0, 0), 1)
+    probability = conjunction_mutation_probability.get_relational_probability(
+        representation, (0, 0, 0, 0), 1
+    )
     assert probability == 0.5

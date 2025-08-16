@@ -1,3 +1,6 @@
+from joblib import Parallel, delayed
+
+from evolvability.global_functions import compute_part
 from evolvability.monotone_conjunction.common_classes_creator import (
     CommonClassesCreator,
 )
@@ -6,9 +9,7 @@ from evolvability.with_population.HGT.HGT_process import HGTProcess
 from evolvability.with_population.HGT.mutation_conjunction_algorithm import (
     HGTConjunctionAlgorithm,
 )
-from evolvability.global_functions import compute_part
 from monotone_conjunctions import MonotoneConjunction
-from joblib import Parallel, delayed
 
 
 def get_number_of_generations_of_single_run(

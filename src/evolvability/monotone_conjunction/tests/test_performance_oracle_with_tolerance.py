@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Any, List, Tuple
+from typing import Any, Tuple
 
 import pytest
 from pytest_mock.plugin import MockerFixture
@@ -36,4 +36,6 @@ def test_one_perf_example(
     representation: Tuple[int, ...] = (0, 0, 1, 0, 1)
     actual_value = performance_oracle_with_tolerance.get_estimated_performance(representation)
 
-    assert actual_value == pytest.approx(expected_value, rel=performance_oracle_with_tolerance.tolerance_param)
+    assert actual_value == pytest.approx(
+        expected_value, rel=performance_oracle_with_tolerance.tolerance_param
+    )

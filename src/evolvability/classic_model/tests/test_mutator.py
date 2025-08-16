@@ -1,4 +1,4 @@
-from typing import Any, Callable, Set, Tuple, List
+from typing import Any, Callable, Set, Tuple
 
 import pytest
 from pytest_mock.plugin import MockerFixture
