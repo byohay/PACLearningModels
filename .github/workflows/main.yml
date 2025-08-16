@@ -22,6 +22,10 @@ jobs:
       run: curl -LsSf https://astral.sh/uv/install.sh | sh
     - name: Add uv to PATH
       run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+    - name: Create uv virtual environment
+      run: uv venv
+    - name: Activate uv virtual environment
+      run: source .venv/bin/activate
     - name: Install dependencies
       run: uv pip install -e .
     - name: Run tests
