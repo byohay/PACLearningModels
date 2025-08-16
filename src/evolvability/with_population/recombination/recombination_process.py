@@ -1,4 +1,5 @@
 import random
+
 from evolvability.with_population.natural_process_mutation_calculator import (
     NaturalProcessMutationCalculator,
 )

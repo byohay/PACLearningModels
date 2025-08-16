@@ -1,6 +1,7 @@
-from decimal import Decimal, getcontext
+from decimal import Decimal
+from typing import Any, Optional, Tuple
+
 from numpy import random
-from typing import List, Optional, Tuple, Any
 
 
 class PerformanceOracleWithTolerance(object):
@@ -64,12 +65,11 @@ class PerformanceOracleWithTolerance(object):
             Decimal: The estimated performance.
         """
         # Generate a random float and convert it to Decimal with the current context precision
-        tolerance = Decimal(str(random.uniform(-float(self.tolerance_param), float(self.tolerance_param))))
+        tolerance = Decimal(
+            str(random.uniform(-float(self.tolerance_param), float(self.tolerance_param)))
+        )
 
         real_perf = self.get_real_performance(representation)
         estimated_perf = tolerance + real_perf
 
         return max(Decimal(-1), min(Decimal(1), estimated_perf))
-
-
-

@@ -1,11 +1,11 @@
 from random import choice
+
 from evolvability.monotone_conjunction.one_sided_performance_oracle import (
     OneSidedPerformanceOracle,
 )
 from evolvability.monotone_conjunction.one_sided_performance_oracle_with_tolerance import (
     OneSidedPerformanceOracleWithTolerance,
 )
-
 from evolvability.monotone_conjunction.performance_oracle import PerformanceOracle
 from evolvability.monotone_conjunction.performance_oracle_with_tolerance import (
     PerformanceOracleWithTolerance,

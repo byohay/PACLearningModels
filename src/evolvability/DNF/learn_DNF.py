@@ -1,9 +1,6 @@
 from math import log
 
 from DNF import DNF
-from evolvability.DNF.one_side_performance_oracle_with_tolerance import (
-    DNFOneSidePerformanceOracleWithTolerance,
-)
 from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import (  # noqa: E501
     ConjunctionEvolvabilityAlgorithm,
 )  # noqa: E501
@@ -17,6 +14,9 @@ from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_toler
     ConjunctionTolerance,
 )
 from evolvability.classic_model.mutator import Mutator
+from evolvability.DNF.one_side_performance_oracle_with_tolerance import (
+    DNFOneSidePerformanceOracleWithTolerance,
+)
 from evolvability.monotone_conjunction.one_sided_performance_oracle_with_tolerance import (
     OneSidedPerformanceOracleWithTolerance,
 )

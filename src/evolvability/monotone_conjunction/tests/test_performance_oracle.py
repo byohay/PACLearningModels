@@ -1,4 +1,4 @@
-from typing import Any, Callable, List, Tuple
+from typing import Any, List
 
 import pytest
 from pytest_mock.plugin import MockerFixture
@@ -27,7 +27,16 @@ def test_simple_perf(
 ) -> None:
     """Tests the simple performance estimation."""
     performance_oracle_mocks.is_function_answering_yes_on_sample.side_effect = [
-        True, True, False, False, True, False, False, True, True, False
+        True,
+        True,
+        False,
+        False,
+        True,
+        False,
+        False,
+        True,
+        True,
+        False,
     ]
 
     representation: List[int] = [1, 0, 0]

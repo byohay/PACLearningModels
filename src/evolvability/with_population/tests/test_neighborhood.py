@@ -1,4 +1,4 @@
-from typing import Callable, Tuple, Any
+from typing import Any, Callable, Tuple
 
 import pytest
 from pytest_mock.plugin import MockerFixture
@@ -31,7 +31,7 @@ def setup_neighborhood_calc(
 
     def _setup(mutation_factor: int) -> NeighborhoodWithOtherRepresentations:
         return NeighborhoodWithOtherRepresentations(
-            2, # number_of_activations
+            2,  # number_of_activations
             mutation_neighborhood,
             mutation_factor,
             natural_process,
@@ -69,4 +69,6 @@ def test_mutation_called_based_on_mutation_factor(
 
     neighborhood_calc.get_neighborhood(first_rep, second_rep)
 
-    assert mutation_neighborhood.get_neighborhood_of_rep.call_count == 2 # number_of_activations is 2
+    assert (
+        mutation_neighborhood.get_neighborhood_of_rep.call_count == 2
+    )  # number_of_activations is 2

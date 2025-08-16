@@ -1,6 +1,8 @@
 import cProfile
 import pstats
+
 from joblib.parallel import Parallel, delayed
+
 from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import (  # noqa: E501
     ConjunctionEvolvabilityAlgorithm,
 )
@@ -124,7 +126,6 @@ def run_in_parallel(
     number_of_parallel,
     is_parallel=True,
 ):
-
     if is_parallel:
         avg_number_of_generations = (
             sum(

@@ -28,7 +28,9 @@ line-length = 100
 
 [tool.ruff]
 line-length = 100
-select = ["E", "F", "I"] # Error, Flake8, Isort
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "TID25"] # Error, Flake8, Isort
 ignore = ["E501"] # Line too long, handled by black
 
 [tool.isort]

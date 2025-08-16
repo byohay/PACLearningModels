@@ -1,4 +1,4 @@
-from typing import Any, List, Tuple
+from typing import List
 
 import pytest
 from pytest_mock.plugin import MockerFixture

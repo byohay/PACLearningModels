@@ -18,7 +18,9 @@ def hgt_process_params() -> Tuple[Tuple[int, ...], int, List[Tuple[int, ...]], i
     return rep, length, population, hgt_factor
 
 
-def test_no_HGT_process(hgt_process_params: Tuple[Tuple[int, ...], int, List[Tuple[int, ...]], int]) -> None:
+def test_no_HGT_process(
+    hgt_process_params: Tuple[Tuple[int, ...], int, List[Tuple[int, ...]], int],
+) -> None:
     """Tests that no HGT process occurs when HGT factor is zero."""
     rep, length, population, _ = hgt_process_params
     hgt_factor = 0
@@ -50,7 +52,7 @@ def test_compute_percent_of_number_of_reps_in_population(
     hgt_process_params: Tuple[Tuple[int, ...], int, List[Tuple[int, ...]], int],
 ) -> None:
     """Tests the computation of the percentage of reps with a gene."""
-    rep, length, population, hgt_factor = hgt_process_params # pylint: disable=W0612
+    rep, length, population, hgt_factor = hgt_process_params  # pylint: disable=W0612
     hgt_process = HGTProcessConstantGenesNumber(hgt_factor, length, 1)
 
     hgt_process.compute_percent_of_number_of_reps_in_population(population)

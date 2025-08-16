@@ -1,5 +1,6 @@
 from math import log
 from random import randint
+
 from evolvability.monotone_conjunction.algorithm import MonotoneConjunctionAlgorithm
 
 

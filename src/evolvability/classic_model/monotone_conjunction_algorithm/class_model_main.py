@@ -1,10 +1,10 @@
-from evolvability.monotone_conjunction.common_classes_creator import (
-    CommonClassesCreator,
-)
 from evolvability.classic_model.monotone_conjunction_algorithm.conjunction_evolvability_algorithm import (  # noqa: E501
     ConjunctionEvolvabilityAlgorithm,
 )  # noqa: E501
 from evolvability.classic_model.mutator import Mutator
+from evolvability.monotone_conjunction.common_classes_creator import (
+    CommonClassesCreator,
+)
 from monotone_conjunctions import MonotoneConjunction
 
 

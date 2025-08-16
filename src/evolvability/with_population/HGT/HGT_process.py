@@ -1,4 +1,5 @@
 import random
+
 from evolvability.with_population.natural_process_mutation_calculator import (
     NaturalProcessMutationCalculator,
 )
@@ -57,9 +58,7 @@ class HGTProcess(NaturalProcessMutationCalculator):
             if (
                 self.is_chance_of_gene_passing_occurred()
                 and random.random()
-                < self.get_fraction_of_reps_with_gene(
-                    gene_index, single_mutation[gene_index]
-                )  # noqa: E501
+                < self.get_fraction_of_reps_with_gene(gene_index, single_mutation[gene_index])  # noqa: E501
             ):
                 single_mutation[gene_index] = 1 - single_mutation[gene_index]
 
